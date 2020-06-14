@@ -1,9 +1,11 @@
 import React from 'react';
 import Main from '../main/main.jsx';
 
-const App = () => {
+const App = ({rentAmount}) => {
+  // console.log(rentAmount);
+
   return (
-    <Main />
+    <Main rents={rentAmount} />
   );
 };
 
