@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Map = () => {
+const MapBlock = () => {
   return (
     <div className="cities__right-section">
       <section className="cities__map map"></section>
@@ -8,4 +8,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default MapBlock;
