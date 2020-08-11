@@ -1,7 +1,8 @@
 import React from 'react';
 import User from '../user/user.jsx';
+import Logo from '../logo/logo.jsx';
 
-const EMAIL = `Oliver.conner@gmail.com`;
+import {MOCK_EMAIL} from '../../consts.js';
 
 const Header = () => {
   return (
@@ -9,20 +10,17 @@ const Header = () => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
-              <img
-                className="header__logo"
-                src="img/logo.svg"
-                alt="6 cities logo"
-                width="81"
-                height="41"
-              />
-            </a>
+
+            <Logo
+              location={`header`}
+              isLinkActive={true}
+            />
+
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <User email={EMAIL} />
+                <User email={MOCK_EMAIL} />
               </li>
             </ul>
           </nav>
