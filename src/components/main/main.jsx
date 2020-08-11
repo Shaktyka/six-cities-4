@@ -19,6 +19,7 @@ const Main = ({places}) => {
         <Tabs />
 
         <div className="cities">
+
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
@@ -30,6 +31,7 @@ const Main = ({places}) => {
             <MapBlock />
 
           </div>
+
         </div>
       </main>
     </div>
