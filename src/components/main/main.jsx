@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 
 import Header from '../header/header.jsx';
 import Tabs from '../tabs/tabs.jsx';
@@ -8,7 +7,6 @@ import MapBlock from '../map-block/map-block.jsx';
 import Card from '../card/card.jsx';
 
 const Main = ({rents, titles}) => {
-  // console.log(titles);
 
   const cardsList = titles.map((title) => (
     <Card
@@ -23,7 +21,9 @@ const Main = ({rents, titles}) => {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
+
         <Tabs />
+
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -51,7 +51,9 @@ const Main = ({rents, titles}) => {
 
               </div>
             </section>
+
             <MapBlock />
+
           </div>
         </div>
       </main>
