@@ -65,7 +65,7 @@ export const places = [
     price: 120,
     rating: 3.8,
     title: `Beautiful & luxurious studio at great location`,
-    type: `apartment`
+    type: `room`
   },
   {
     bedrooms: 3,
@@ -99,7 +99,7 @@ export const places = [
     price: 120,
     rating: 4.8,
     title: `Beautiful & luxurious studio at great location`,
-    type: `apartment`
+    type: `house`
   },
   {
     bedrooms: 3,
@@ -133,7 +133,7 @@ export const places = [
     price: 120,
     rating: 1,
     title: `Beautiful & luxurious studio at great location`,
-    type: `apartment`
+    type: `hotel`
   }
 ];
 

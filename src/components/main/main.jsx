@@ -7,6 +7,8 @@ import Filter from '../filter/filter.jsx';
 import MapBlock from '../map-block/map-block.jsx';
 import CardsList from '../cards-list/cards-list.jsx';
 
+const city = `Amsterdam`;
+
 const Main = ({places}) => {
 
   return (
@@ -23,7 +25,7 @@ const Main = ({places}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{places.length} places to stay in Amsterdam</b>
+              <b className="places__found">{places.length} places to stay in {city}</b>
               <Filter />
               <CardsList places={places} />
             </section>
