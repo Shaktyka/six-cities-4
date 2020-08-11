@@ -1,4 +1,7 @@
 import React from 'react';
+import User from '../user/user.jsx';
+
+const EMAIL = `Oliver.conner@gmail.com`;
 
 const Header = () => {
   return (
@@ -19,11 +22,7 @@ const Header = () => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                </a>
+                <User email={EMAIL} />
               </li>
             </ul>
           </nav>
