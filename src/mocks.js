@@ -12,24 +12,24 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatar_url: `img/1.png`,
+      avatarUrl: `img/1.png`,
       id: 3,
-      is_pro: true,
+      isPro: true,
       name: `Angelina`
     },
     id: 1,
-    images: [`img/1.png`, `img/2.png`],
-    is_favorite: false,
-    is_premium: false,
+    images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
+    isFavorite: false,
+    isPremium: true,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
       zoom: 8
     },
-    max_adults: 4,
-    preview_image: `img/1.png`,
+    maxAdults: 4,
+    previewImage: `img/apartment-01.jpg`,
     price: 120,
-    rating: 4.8,
+    rating: 2.8,
     title: `Beautiful & luxurious studio at great location`,
     type: `apartment`
   },
@@ -46,24 +46,24 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatar_url: `img/1.png`,
+      avatarUrl: `img/1.png`,
       id: 3,
-      is_pro: true,
+      isPro: true,
       name: `Angelina`
     },
     id: 2,
-    images: [`img/1.png`, `img/2.png`],
-    is_favorite: false,
-    is_premium: false,
+    images: [`img/apartment-02.jpg`, `img/apartment-03.jpg`],
+    isFavorite: true,
+    isPremium: false,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
       zoom: 8
     },
-    max_adults: 4,
-    preview_image: `img/1.png`,
+    maxAdults: 4,
+    previewImage: `img/apartment-02.jpg`,
     price: 120,
-    rating: 4.8,
+    rating: 3.8,
     title: `Beautiful & luxurious studio at great location`,
     type: `apartment`
   },
@@ -80,22 +80,22 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatar_url: `img/1.png`,
+      avatarUrl: `img/1.png`,
       id: 3,
-      is_pro: true,
+      isPro: true,
       name: `Angelina`
     },
     id: 3,
-    images: [`img/1.png`, `img/2.png`],
-    is_favorite: false,
-    is_premium: false,
+    images: [`img/apartment-03.jpg`, `img/apartment-01.jpg`],
+    isFavorite: true,
+    isPremium: false,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
       zoom: 8
     },
-    max_adults: 4,
-    preview_image: `img/1.png`,
+    maxAdults: 4,
+    previewImage: `img/apartment-03.jpg`,
     price: 120,
     rating: 4.8,
     title: `Beautiful & luxurious studio at great location`,
@@ -114,24 +114,24 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatar_url: `img/1.png`,
+      avatarUrl: `img/1.png`,
       id: 3,
-      is_pro: true,
+      isPro: true,
       name: `Angelina`
     },
     id: 4,
-    images: [`img/1.png`, `img/2.png`],
-    is_favorite: false,
-    is_premium: false,
+    images: [`img/apartment-01.jpg`, `img/apartment-03.jpg`],
+    isFavorite: false,
+    isPremium: true,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
       zoom: 8
     },
-    max_adults: 4,
-    preview_image: `img/1.png`,
+    maxAdults: 4,
+    previewImage: `img/apartment-01.jpg`,
     price: 120,
-    rating: 4.8,
+    rating: 1,
     title: `Beautiful & luxurious studio at great location`,
     type: `apartment`
   }
@@ -150,22 +150,22 @@ export const hotel = {
   description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   host: {
-    avatar_url: `img/1.png`,
+    avatarUrl: `img/1.png`,
     id: 3,
-    is_pro: true,
+    isPro: true,
     name: `Angelina`
   },
   id: 1,
   images: [`img/1.png`, `img/2.png`],
-  is_favorite: false,
-  is_premium: false,
+  isFavorite: false,
+  isPremium: false,
   location: {
     latitude: 52.35514938496378,
     longitude: 4.673877537499948,
     zoom: 8
   },
-  max_adults: 4,
-  preview_image: `img/1.png`,
+  maxAdults: 4,
+  previewImage: `img/1.png`,
   price: 120,
   rating: 4.8,
   title: `Beautiful & luxurious studio at great location`,
@@ -173,10 +173,10 @@ export const hotel = {
 };
 
 export const authInfo = {
-  avatar_url: `img/1.png`,
+  avatarUrl: `img/1.png`,
   email: `Oliver.conner@gmail.com`,
   id: 1,
-  is_pro: false,
+  isPro: false,
   name: `Oliver.conner`
 };
 
