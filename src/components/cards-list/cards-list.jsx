@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {nanoid} from 'nanoid';
 
 import Card from '../card/card.jsx';
 
-const CardsList = ({titles}) => {
+const CardsList = (props) => {
+  const {places} = props;
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        titles.map((title) => {
+        places.map((place, i) => {
           return (
             <Card
-              title={title}
-              key={nanoid(6)}
+              title={place.title}
+              id={place.id}
+              key={i}
             />
           );
         })
@@ -22,7 +24,7 @@ const CardsList = ({titles}) => {
 };
 
 CardsList.propTypes = {
-  titles: PropTypes.arrayOf(PropTypes.string),
+  places: PropTypes.array.isRequired,
 };
 
 export default CardsList;

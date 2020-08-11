@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 import Main from '../main/main.jsx';
 
-const App = ({rentAmount, rentTitles}) => {
+const App = ({rentAmount, places}) => {
 
   return (
     <Main
       rents={rentAmount}
-      titles={rentTitles}
+      places={places}
     />
   );
 };
 
 App.propTypes = {
   rentAmount: PropTypes.number.isRequired,
-  rentTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  places: PropTypes.array.isRequired,
 };
 
 export default App;

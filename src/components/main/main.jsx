@@ -7,7 +7,7 @@ import Filter from '../filter/filter.jsx';
 import MapBlock from '../map-block/map-block.jsx';
 import CardsList from '../cards-list/cards-list.jsx';
 
-const Main = ({rents, titles}) => {
+const Main = ({rents, places}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -24,7 +24,7 @@ const Main = ({rents, titles}) => {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{rents} places to stay in Amsterdam</b>
               <Filter />
-              <CardsList titles={titles} />
+              <CardsList places={places} />
             </section>
 
             <MapBlock />
@@ -38,7 +38,7 @@ const Main = ({rents, titles}) => {
 
 Main.propTypes = {
   rents: PropTypes.number.isRequired,
-  titles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  places: PropTypes.array.isRequired,
 };
 
 export default Main;
