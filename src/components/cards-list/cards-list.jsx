@@ -12,8 +12,7 @@ const CardsList = (props) => {
         places.map((place, i) => {
           return (
             <Card
-              title={place.title}
-              id={place.id}
+              place={place}
               key={i}
             />
           );

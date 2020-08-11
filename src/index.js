@@ -3,15 +3,13 @@ import ReactDOM from 'react-dom';
 
 import App from './components/app/app.jsx';
 
-import {RENT_AMOUNT} from './consts.js';
 import {places} from './mocks.js';
-console.log(places);
+console.log(places[0]);
 
 const root = document.querySelector(`#root`);
 
 ReactDOM.render(
     <App
-      rentAmount={RENT_AMOUNT}
       places={places}
     />,
     root
