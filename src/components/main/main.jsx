@@ -1,19 +1,11 @@
 import React from 'react';
-import {nanoid} from 'nanoid';
 
 import Header from '../header/header.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import MapBlock from '../map-block/map-block.jsx';
-import Card from '../card/card.jsx';
+import CardsList from '../cards-list/cards-list.jsx';
 
 const Main = ({rents, titles}) => {
-
-  const cardsList = titles.map((title) => (
-    <Card
-      title={title}
-      key={nanoid(6)}
-    />
-  ));
 
   return (
     <div className="page page--gray page--main">
@@ -45,11 +37,9 @@ const Main = ({rents, titles}) => {
                 </ul>
 
               </form>
-              <div className="cities__places-list places__list tabs__content">
 
-                {cardsList}
+              <CardsList titles={titles} />
 
-              </div>
             </section>
 
             <MapBlock />
