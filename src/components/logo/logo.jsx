@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {LogoHeaderSize, LogoFooterSize} from '../../consts.js';
 
 const getWidth = (location) => {
@@ -36,6 +38,11 @@ const Logo = ({location = `header`, isLinkActive = false}) => {
       />
     </a>
   );
+};
+
+Logo.propTypes = {
+  location: PropTypes.string.isRequired,
+  isLinkActive: PropTypes.bool.isRequired,
 };
 
 export default Logo;

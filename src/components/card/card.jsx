@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = ({title}) => {
   return (
@@ -37,6 +38,10 @@ const Card = ({title}) => {
       </div>
     </article>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Card;

@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const TabItem = ({location, isActive}) => {
+const TabItem = ({location = ``, isActive = false}) => {
   const classForActiveTab = isActive ? `tabs__item--active` : ``;
 
   return (
@@ -10,6 +11,11 @@ const TabItem = ({location, isActive}) => {
       </a>
     </li>
   );
+};
+
+TabItem.propTypes = {
+  location: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 export default TabItem;

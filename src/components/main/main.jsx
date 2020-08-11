@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../header/header.jsx';
 import Tabs from '../tabs/tabs.jsx';
@@ -33,6 +34,11 @@ const Main = ({rents, titles}) => {
       </main>
     </div>
   );
+};
+
+Main.propTypes = {
+  rents: PropTypes.number.isRequired,
+  titles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Main;

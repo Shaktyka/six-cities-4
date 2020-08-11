@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const isAuthorized = true;
 
@@ -16,6 +17,10 @@ const User = ({email}) => {
       }
     </a>
   );
+};
+
+User.propTypes = {
+  email: PropTypes.string.isRequired,
 };
 
 export default User;

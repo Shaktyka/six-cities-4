@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {nanoid} from 'nanoid';
 
 import Card from '../card/card.jsx';
@@ -18,6 +19,10 @@ const CardsList = ({titles}) => {
       }
     </div>
   );
+};
+
+CardsList.propTypes = {
+  titles: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default CardsList;

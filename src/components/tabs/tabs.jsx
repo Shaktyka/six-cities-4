@@ -1,8 +1,8 @@
 import React from 'react';
-import TabItem from '../tab-item/tab-item.jsx';
+// import PropTypes from 'prop-types';
 
-const TABS = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
-const ACTIVE_TAB = TABS[0];
+import TabItem from '../tab-item/tab-item.jsx';
+import {TABS, ACTIVE_TAB} from '../../consts.js';
 
 const Tabs = () => {
 

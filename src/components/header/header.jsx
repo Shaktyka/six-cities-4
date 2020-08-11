@@ -1,4 +1,6 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
+
 import User from '../user/user.jsx';
 import Logo from '../logo/logo.jsx';
 
