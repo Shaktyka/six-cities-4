@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const Offer = (props) => {
+const Offer = () => {
 
   return (
     <div />

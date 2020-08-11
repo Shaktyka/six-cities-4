@@ -6,14 +6,6 @@ import Logo from '../logo/logo.jsx';
 
 import {MOCK_EMAIL} from '../../consts.js';
 
-// {
-//   "avatar_url": "img/1.png",
-//   "email": "Oliver.conner@gmail.com",
-//   "id": 1,
-//   "is_pro": false,
-//   "name": "Oliver.conner"
-// }
-
 const Header = () => {
   return (
     <header className="header">
