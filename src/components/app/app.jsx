@@ -19,8 +19,14 @@ const App = ({places}) => {
           render={(props) => <Main places={places} {...props} />}
         />
         <Route
-          exact path={AppRoute.OFFER}
-          render={(props) => <Offer offer={places[0]} {...props} />}
+          exact path={`/offer/:id`}
+          render={(props) => {
+            return (<Offer
+              offers={places}
+              offerId={props.match.params.id}
+              {...props}
+            />);
+          }}
         />
         <Route
           render={() => <NotFound />}

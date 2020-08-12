@@ -31,7 +31,7 @@ const Logo = ({location = `header`, isLinkActive = false}) => {
     <a className={`${location}__logo-link ${activeClass}`} href="/">
       <img
         className={`${location}__logo`}
-        src="img/logo.svg"
+        src="/img/logo.svg"
         alt="6 cities logo"
         width={getWidth(location)}
         height={getHeight(location)}

@@ -21,8 +21,8 @@ const premiumMark = (
 );
 
 const Offer = (props) => {
-  const {offer} = props;
-  console.log(offer);
+  const {offers, offerId} = props;
+  const offer = offers.find((offerEl) => offerEl.id === +offerId);
 
   const {
     bedrooms,
@@ -107,7 +107,7 @@ const Offer = (props) => {
                   <span className="reviews__amount">{REVIEWS.length}</span>
                 </h2>
                 {
-                  <ReviewsList reviews={REVIEWS} />
+                  <ReviewsList reviews={REVIEWS.slice(0, 10)} />
                 }
                 {
                   <ReviewsForm />
@@ -128,7 +128,8 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
-  offer: PropTypes.object.isRequired,
+  offers: PropTypes.array.isRequired,
+  offerId: PropTypes.string.isRequired,
 };
 
 export default Offer;

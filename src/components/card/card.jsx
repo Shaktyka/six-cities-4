@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {Link} from 'react-router-dom';
+
 import {formatInitCap, formatRating} from '../../utils.js';
 
 const Card = ({place}) => {
   const {
     id,
-    title,
+    images,
     isFavorite,
     isPremium,
-    type,
-    images,
     price,
-    rating
+    rating,
+    title,
+    type,
   } = place;
 
   const isFavoriteClass = isFavorite ? `place-card__bookmark-button--active` : ``;
@@ -27,7 +29,7 @@ const Card = ({place}) => {
         </div>
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="/">
+        <Link to={`/offer/${id}`} onClick={(evt) => evt.preventDefault()}>
           <img
             className="place-card__image"
             src={images[0]}
@@ -35,7 +37,7 @@ const Card = ({place}) => {
             height="200"
             alt={`${title} image`}
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -57,7 +59,7 @@ const Card = ({place}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">{title}</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{formatInitCap(type)}</p>
       </div>

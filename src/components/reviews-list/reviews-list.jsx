@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Review from '../review/review.jsx';
 
+// Нужна сортировка списка отзывов по дате
+
 const ReviewsList = ({reviews = []}) => {
 
   return (

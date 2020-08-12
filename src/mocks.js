@@ -12,13 +12,13 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatarUrl: `img/avatar-angelina.jpg`,
+      avatarUrl: `/img/avatar-angelina.jpg`,
       id: 3,
       isPro: true,
       name: `Angelina`
     },
     id: 1,
-    images: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`],
+    images: [`/img/room.jpg`, `/img/apartment-01.jpg`, `/img/apartment-02.jpg`],
     isFavorite: true,
     isPremium: true,
     location: {
@@ -27,7 +27,7 @@ export const places = [
       zoom: 8
     },
     maxAdults: 4,
-    previewImage: `img/apartment-01.jpg`,
+    previewImage: `/img/apartment-01.jpg`,
     price: 120,
     rating: 2.8,
     title: `Beautiful & luxurious studio at great location`,
@@ -46,13 +46,13 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatarUrl: `img/1.png`,
+      avatarUrl: `/img/avatar-angelina.jpg`,
       id: 3,
       isPro: true,
       name: `Angelina`
     },
     id: 2,
-    images: [`img/apartment-02.jpg`, `img/apartment-03.jpg`],
+    images: [`/img/apartment-02.jpg`, `/img/apartment-03.jpg`],
     isFavorite: true,
     isPremium: false,
     location: {
@@ -61,8 +61,8 @@ export const places = [
       zoom: 8
     },
     maxAdults: 4,
-    previewImage: `img/apartment-02.jpg`,
-    price: 120,
+    previewImage: `/img/apartment-02.jpg`,
+    price: 80,
     rating: 3.8,
     title: `Beautiful & luxurious studio at great location`,
     type: `room`
@@ -80,13 +80,13 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatarUrl: `img/1.png`,
+      avatarUrl: `/img/avatar-angelina.jpg`,
       id: 3,
       isPro: true,
       name: `Angelina`
     },
     id: 3,
-    images: [`img/apartment-03.jpg`, `img/apartment-01.jpg`],
+    images: [`/img/apartment-03.jpg`, `/img/apartment-01.jpg`],
     isFavorite: true,
     isPremium: false,
     location: {
@@ -95,8 +95,8 @@ export const places = [
       zoom: 8
     },
     maxAdults: 4,
-    previewImage: `img/apartment-03.jpg`,
-    price: 120,
+    previewImage: `/img/apartment-03.jpg`,
+    price: 200,
     rating: 4.8,
     title: `Beautiful & luxurious studio at great location`,
     type: `house`
@@ -114,13 +114,13 @@ export const places = [
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     host: {
-      avatarUrl: `img/1.png`,
+      avatarUrl: `/img/avatar-angelina.jpg`,
       id: 3,
       isPro: true,
       name: `Angelina`
     },
     id: 4,
-    images: [`img/apartment-01.jpg`, `img/apartment-03.jpg`],
+    images: [`/img/apartment-01.jpg`, `/img/apartment-03.jpg`],
     isFavorite: false,
     isPremium: true,
     location: {
@@ -129,8 +129,8 @@ export const places = [
       zoom: 8
     },
     maxAdults: 4,
-    previewImage: `img/apartment-01.jpg`,
-    price: 120,
+    previewImage: `/img/apartment-01.jpg`,
+    price: 65,
     rating: 1,
     title: `Beautiful & luxurious studio at great location`,
     type: `hotel`
@@ -150,13 +150,13 @@ export const hotel = {
   description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
   host: {
-    avatarUrl: `img/1.png`,
+    avatarUrl: `/img/1.png`,
     id: 3,
     isPro: true,
     name: `Angelina`
   },
   id: 1,
-  images: [`img/1.png`, `img/2.png`],
+  images: [`/img/1.png`, `/img/2.png`],
   isFavorite: false,
   isPremium: false,
   location: {
@@ -165,7 +165,7 @@ export const hotel = {
     zoom: 8
   },
   maxAdults: 4,
-  previewImage: `img/1.png`,
+  previewImage: `/img/1.png`,
   price: 120,
   rating: 4.8,
   title: `Beautiful & luxurious studio at great location`,
@@ -173,7 +173,7 @@ export const hotel = {
 };
 
 export const authInfo = {
-  avatarUrl: `img/1.png`,
+  avatarUrl: `/img/1.png`,
   email: `Oliver.conner@gmail.com`,
   id: 1,
   isPro: false,
@@ -193,7 +193,7 @@ export const userComment = {
   id: 1,
   rating: 4,
   user: {
-    avatarUrl: `img/avatar-max.jpg`,
+    avatarUrl: `/img/avatar-max.jpg`,
     id: 4,
     isPro: false,
     name: `Max`
