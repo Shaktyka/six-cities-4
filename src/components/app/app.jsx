@@ -20,7 +20,7 @@ const App = ({places}) => {
         />
         <Route
           exact path={AppRoute.OFFER}
-          render={(props) => <Offer {...props} />}
+          render={(props) => <Offer offer={places[0]} {...props} />}
         />
         <Route
           render={() => <NotFound />}
