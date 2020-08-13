@@ -19,7 +19,8 @@ const NotFound = () => {
             <div className="favorites__status-wrapper">
               <b className="favorites__status">404 Error</b>
               <p className="favorites__status-description">
-                Let&apos;s find something else on the <Link to={AppRoute.ROOT}>main page</Link>.
+                Let&apos;s find something else on the
+                <Link to={AppRoute.ROOT} style={{color: `#4481c3`}}> main page</Link>.
               </p>
             </div>
           </section>

@@ -29,7 +29,7 @@ const App = ({places}) => {
           }}
         />
         <Route
-          render={() => <NotFound />}
+          component={NotFound}
         />
       </Switch>
     </BrowserRouter>
