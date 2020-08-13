@@ -6,6 +6,9 @@ export const RESPONSE_TIMEOUT = 5000;
 
 export const MAX_CITIES_AMOUNT = 6;
 
+export const FILTERS = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
+export const ACTIVE_FILTER = `Popular`;
+
 export const MOCK_EMAIL = `Oliver.conner@gmail.com`;
 
 export const AppRoute = {
