@@ -1,6 +1,8 @@
 export const TABS = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 export const ACTIVE_TAB = TABS[0];
 
+export const MAX_CITIES_AMOUNT = 6;
+
 export const MOCK_EMAIL = `Oliver.conner@gmail.com`;
 
 export const AppRoute = {
