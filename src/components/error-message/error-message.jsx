@@ -34,7 +34,7 @@ const ErrorMessage = ({message = ``}) => {
 };
 
 ErrorMessage.propTypes = {
-  error: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 };
 
 export default ErrorMessage;
