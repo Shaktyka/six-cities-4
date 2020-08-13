@@ -217,7 +217,7 @@ export const Operation = {
 
     return api.get(Endpoint.OFFERS)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
         dispatch(ActionCreator.loadOffers(adaptedOffers));
         // получить список городов
@@ -236,7 +236,7 @@ export const Operation = {
       .catch((error) => {
         dispatch(ActionCreator.setOffersLoading(false));
         dispatch(ActionCreator.setLoadOffersError(error));
-        console.log(error);
+        // console.log(error);
       });
   },
 
