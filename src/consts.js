@@ -10,6 +10,11 @@ export const AppRoute = {
   offer: `/offer`
 };
 
+export const AuthStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 export const LogoHeaderSize = {
   WIDTH: 81,
   HEIGHT: 41
