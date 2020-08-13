@@ -9,6 +9,7 @@ import Main from '../main/main.jsx';
 import Favorites from '../favorites/favorites.jsx';
 import Offer from '../offer/offer.jsx';
 import NotFound from '../not-found/not-found.jsx';
+import Login from '../login/login.jsx';
 
 // Константы и пр.
 import {AppRoute} from '../../consts.js';
@@ -31,6 +32,10 @@ const App = ({places}) => {
               {...props}
             />);
           }}
+        />
+        <Route
+          exact path={AppRoute.LOGIN}
+          render={(props) => <Login {...props} />}
         />
         <Route
           exact path={AppRoute.FAVORITES}
