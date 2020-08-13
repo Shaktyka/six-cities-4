@@ -1,30 +1,34 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
+import FavoritesEmpty from '../favorites-empty/favorites-empty.jsx';
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
 
 // Title: 6 cities: favorites
 
-const Favorites = () => {
+const Favorites = (props) => {
+  const {places = []} = props;
 
   return (
-    <div className="page">
-      <Header />
+    places.length > 0 ?
+      <div className="page">
+        <Header />
 
-      <main className="page__main page__main--favorites">
-        <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
+        <main className="page__main page__main--favorites">
+          <div className="page__favorites-container container">
+            <section className="favorites">
+              <h1 className="favorites__title">Saved listing</h1>
+              <ul className="favorites__list">
+                <li className="favorites__locations-items">
+                  <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
                     <a className="locations__item-link" href="#">
                       <span>Amsterdam</span>
                     </a>
                   </div>
-                </div>
-                <div className="favorites__places">
+                  </div>
+                  <div className="favorites__places">
                   <article className="favorites__card place-card">
                     <div className="favorites__image-wrapper place-card__image-wrapper">
                       <a href="#">
@@ -47,7 +51,7 @@ const Favorites = () => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 100%"></span>
+                          <span style={{width: `100%`}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -80,7 +84,7 @@ const Favorites = () => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 80%"></span>
+                          <span style={{width: `80%`}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -90,18 +94,18 @@ const Favorites = () => {
                       <p className="place-card__type">Private room</p>
                     </div>
                   </article>
-                </div>
-              </li>
+                  </div>
+                </li>
 
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
+                <li className="favorites__locations-items">
+                  <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
                     <a className="locations__item-link" href="#">
                       <span>Cologne</span>
                     </a>
                   </div>
-                </div>
-                <div className="favorites__places">
+                  </div>
+                  <div className="favorites__places">
                   <article className="favorites__card place-card">
                     <div className="favorites__image-wrapper place-card__image-wrapper">
                       <a href="#">
@@ -124,7 +128,7 @@ const Favorites = () => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style="width: 100%"></span>
+                          <span style={{width: `60%`}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -134,19 +138,22 @@ const Favorites = () => {
                       <p className="place-card__type">Apartment</p>
                     </div>
                   </article>
-                </div>
-              </li>
-            </ul>
-          </section>
-        </div>
-      </main>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+      :
+      <FavoritesEmpty />
   );
 };
 
-// Favorites.propTypes = {
-// };
+Favorites.propTypes = {
+  places: PropTypes.array.isRequired,
+};
 
 export default Favorites;
