@@ -30,7 +30,7 @@ const Main = ({places}) => {
               <CardsList places={places} />
             </section>
 
-            <MapBlock />
+            <MapBlock places={places} />
 
           </div>
 
