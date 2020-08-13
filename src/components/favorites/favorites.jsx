@@ -120,7 +120,7 @@ const Favorites = (props) => {
 };
 
 Favorites.propTypes = {
-  places: PropTypes.array.isRequired,
+  places: PropTypes.array,
 };
 
 export default Favorites;

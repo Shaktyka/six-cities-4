@@ -53,7 +53,7 @@ export const places = [
     },
     id: 2,
     images: [`/img/apartment-02.jpg`, `/img/apartment-03.jpg`],
-    isFavorite: true,
+    isFavorite: false,
     isPremium: false,
     location: {
       latitude: 52.3909553943508,

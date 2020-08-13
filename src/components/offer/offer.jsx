@@ -119,7 +119,7 @@ const Offer = (props) => {
         </section>
         <div className="container">
           {
-            <NearPlaces />
+            <NearPlaces places={offers.slice(0, 3)} />
           }
         </div>
       </main>
