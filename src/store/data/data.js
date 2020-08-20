@@ -1,8 +1,8 @@
 import {extend} from '../../utils.js';
 import {getAdaptedOffer} from '../../adapter/adapter.js';
-import {MAX_CITIES_AMOUNT} from '../../consts.js';
+import {MAX_CITIES_AMOUNT, Endpoint} from '../../consts.js';
 
-import {Endpoint} from '../../consts.js';
+import {ActionCreator as AppActionCreator} from '../app/app.js';
 
 export const initialState = {
   offers: [],
@@ -217,26 +217,26 @@ export const Operation = {
 
     return api.get(Endpoint.OFFERS)
       .then((response) => {
-        // console.log(response.data);
         const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
         dispatch(ActionCreator.loadOffers(adaptedOffers));
-        // получить список городов
+        // Получаем список городов
         const citiesList = [
           ...new Set(adaptedOffers
             .map((offerObject) => offerObject.city.name)
             .slice(0, MAX_CITIES_AMOUNT))
         ];
-        // задиспатчить его в список городов:
+        // Записываем его в список городов:
         dispatch(ActionCreator.setCities(citiesList));
-        // найти первый город и записать его в активный (?)
-        // const activeCity = citiesList[0];
+        // Находим первый город и записываем его в активный
+        const activeCity = citiesList[0] || ``;
+        dispatch(AppActionCreator.setActiveCity(activeCity))
+        // Завершаем запрос
         dispatch(ActionCreator.setOffersLoading(false));
         dispatch(ActionCreator.setLoadOffersError(``));
       })
       .catch((error) => {
         dispatch(ActionCreator.setOffersLoading(false));
         dispatch(ActionCreator.setLoadOffersError(error));
-        // console.log(error);
       });
   },
 

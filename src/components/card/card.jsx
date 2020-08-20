@@ -20,7 +20,13 @@ const Card = ({place}) => {
   const isFavoriteClass = isFavorite ? `place-card__bookmark-button--active` : ``;
 
   return (
-    <article className="cities__place-card place-card" id={id}>
+    <article
+      className="cities__place-card place-card"
+      id={id}
+      onMouseOver={() => {
+        // console.log(id);
+      }}
+    >
       {
         isPremium
         &&

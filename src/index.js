@@ -13,8 +13,6 @@ import {Operation as DataOperation} from './store/data/data.js';
 
 import App from './components/app/app.jsx';
 
-import {places} from './mocks.js';
-
 const onUnauthorized = () => {
   store.dispatch(ActionCreator.setAuthStatus(AuthStatus.NO_AUTH));
 };
@@ -34,7 +32,7 @@ store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App places={places} />
+      <App />
     </Provider>,
     root
 );
