@@ -5,18 +5,21 @@ import Review from '../review/review.jsx';
 
 // Нужна сортировка списка отзывов по дате
 
-const ReviewsList = ({reviews = []}) => {
+const ReviewsList = ({reviews = [], loadError}) => {
 
   return (
-    <ul className="reviews__list">
-      {
-        reviews.map((review, i) => {
-          return (
-            <Review review={review} key={i} />
-          );
-        })
-      }
-    </ul>
+    !loadError
+      ?
+        <ul className="reviews__list">
+          {
+            reviews.map((review, i) => {
+              return (
+                <Review review={review} key={i} />
+              );
+            })
+          }
+        </ul>
+      : <div>{loadError}</div>
   );
 };
 

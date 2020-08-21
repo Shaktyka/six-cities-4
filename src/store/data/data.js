@@ -1,5 +1,5 @@
 import {extend} from '../../utils.js';
-import {getAdaptedOffer} from '../../adapter/adapter.js';
+import {getAdaptedOffer, getAdaptedReview} from '../../adapter/adapter.js';
 import {MAX_CITIES_AMOUNT, Endpoint} from '../../consts.js';
 
 import {ActionCreator as AppActionCreator} from '../app/app.js';
@@ -237,6 +237,22 @@ export const Operation = {
       .catch((error) => {
         dispatch(ActionCreator.setOffersLoading(false));
         dispatch(ActionCreator.setLoadOffersError(error));
+      });
+  },
+
+  loadReviews: (id) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setOfferReviewsLoading(true));
+
+    return api.get(`${Endpoint.REVIEWS}/${id}`)
+      .then((response) => {
+        const adaptedReviews = response.data.map((review) => getAdaptedReview(review));
+        dispatch(ActionCreator.loadOfferReviews(adaptedReviews));
+        dispatch(ActionCreator.setOfferReviewsLoading(false));
+        dispatch(ActionCreator.setLoadOfferReviewsError(``));
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.setOfferReviewsLoading(false));
+        dispatch(ActionCreator.setLoadOfferReviewsError(error));
       });
   },
 

@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Служебные
+import {connect} from 'react-redux';
+import {getOfferReviews, getIsOfferReviewsLoading, getLoadOfferReviewsError} from '../../store/data/selectors.js';
+import {Operation as DataOperation} from '../../store/data/data';
+
+// Компоненты
 import Header from '../header/header.jsx';
 import PropertyGallery from '../property-gallery/property-gallery.jsx';
 import PropertyInside from '../property-inside/property-inside.jsx';
 import Host from '../host/host.jsx';
 import NearPlaces from '../near-places/near-places.jsx';
-import ReviewsList from '../reviews-list/reviews-list.jsx';
-import ReviewsForm from '../reviews-form/reviews-form.jsx';
+import Reviews from '../reviews/reviews.jsx';
 
 import {formatInitCap, formatRating} from '../../utils.js';
-import {userComment} from '../../mocks.js';
-
-const REVIEWS = [userComment];
 
 const premiumMark = (
   <div className="property__mark">
@@ -21,7 +23,14 @@ const premiumMark = (
 );
 
 const Offer = (props) => {
-  const {offers} = props;
+  const {
+    offers,
+    offerReviews,
+    isOfferReviewsLoading,
+    loadOfferReviewsError,
+    loadOfferReviews,
+  } = props;
+
   const offerId = props.match.params.id;
   const offer = offers.find((item) => item.id === +offerId);
 
@@ -108,18 +117,15 @@ const Offer = (props) => {
               {
                 <Host host={host} description={description} />
               }
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">
-                  Reviews &middot;
-                  <span className="reviews__amount">{REVIEWS.length}</span>
-                </h2>
-                {
-                  <ReviewsList reviews={REVIEWS.slice(0, 10)} />
-                }
-                {
-                  <ReviewsForm />
-                }
-              </section>
+              {
+                <Reviews
+                  id={offerId}
+                  reviews={offerReviews}
+                  isLoading={isOfferReviewsLoading}
+                  loadError={loadOfferReviewsError}
+                  loadReviews={loadOfferReviews}
+                />
+              }
             </div>
           </div>
           <section className="property__map map"></section>
@@ -136,6 +142,19 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   offers: PropTypes.array.isRequired,
+  loadOfferReviews: PropTypes.func.isRequired,
 };
 
-export default Offer;
+const mapStateToProps = (state) => ({
+  offerReviews: getOfferReviews(state),
+  isOfferReviewsLoading: getIsOfferReviewsLoading(state),
+  loadOfferReviewsError: getLoadOfferReviewsError(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadOfferReviews(id) {
+    dispatch(DataOperation.loadReviews(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Offer);

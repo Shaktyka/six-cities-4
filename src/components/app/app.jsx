@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {Operation as DataOperation} from '../../store/data/data';
 import {
   getAuthStatus,
   getAuthProgress,
@@ -14,6 +15,7 @@ import {
   getOffers,
   getIsOffersLoading,
   getLoadOffersError,
+  getOfferReviews,
 } from '../../store/data/selectors';
 
 // Компоненты
@@ -35,6 +37,7 @@ const App = (props) => {
     isOffersLoading,
     loadOffersError,
     cities,
+    getOfferReviews,
 
     authStatus,
     isAuthProgress,
@@ -54,6 +57,7 @@ const App = (props) => {
               <Route
                 exact path={`/offer/:id`}
                 render={(props) => {
+                  // getOfferReviews(props.match.params.id);
                   return <Offer offers={allOffers} {...props} />;
                 }}
               />
@@ -91,8 +95,11 @@ const mapStateToProps = (state) => ({
   loadOffersError: getLoadOffersError(state),
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-// });
+const mapDispatchToProps = (dispatch) => ({
+  getOfferReviews(id) {
+    dispatch(DataOperation.loadReviews(id));
+  }
+});
 
 export {App};
 export default connect(mapStateToProps)(App);
