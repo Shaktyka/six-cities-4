@@ -40,38 +40,43 @@ const App = (props) => {
     userData,
   } = props;
 
-  // console.log(cities);
-
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route
-          exact path={AppRoute.ROOT}
-          render={(props) => <Main places={places} {...props} />}
-        />
-        <Route
-          exact path={`/offer/:id`}
-          render={(props) => {
-            return (<Offer
-              offers={places}
-              offerId={props.match.params.id}
-              {...props}
-            />);
-          }}
-        />
-        <Route
-          exact path={AppRoute.LOGIN}
-          render={(props) => <Login {...props} />}
-        />
-        <Route
-          exact path={AppRoute.FAVORITES}
-          render={(props) => <Favorites {...props} />}
-        />
-        <Route
-          component={NotFound}
-        />
-      </Switch>
-    </BrowserRouter>
+    <>
+      {
+        !isAuthProgress ?
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact path={AppRoute.ROOT}
+                render={(props) => <Main places={places} {...props} />}
+              />
+              <Route
+                exact path={`/offer/:id`}
+                render={(props) => {
+                  return (<Offer
+                    offers={places}
+                    offerId={props.match.params.id}
+                    {...props}
+                  />);
+                }}
+              />
+              <Route
+                exact path={AppRoute.LOGIN}
+                render={(props) => <Login {...props} />}
+              />
+              <Route
+                exact path={AppRoute.FAVORITES}
+                render={(props) => <Favorites {...props} />}
+              />
+              <Route
+                component={NotFound}
+              />
+            </Switch>
+          </BrowserRouter>
+          :
+          <Loader />
+      }
+    </>
   );
 };
 
