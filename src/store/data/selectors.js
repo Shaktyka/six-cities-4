@@ -1,4 +1,6 @@
 import NameSpace from '../name-space.js';
+import {createSelector} from 'reselect';
+import {getActiveCity} from '../app/selectors.js';
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -6,6 +8,15 @@ const NAME_SPACE = NameSpace.DATA;
 export const getOffers = (state) => {
   return state[NAME_SPACE].offers;
 };
+
+// Получаем офферы, отфильтрованные по активному городу
+export const getCityOffers = createSelector(
+  getActiveCity,
+  getOffers,
+  (city, offers) => {
+    return offers.filter((offer) => offer.city.name === city);
+  }
+);
 
 export const getFavorites = (state) => {
   return state[NAME_SPACE].favorites;

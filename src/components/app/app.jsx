@@ -10,7 +10,7 @@ import {
   getUserData
 } from '../../store/user/selectors';
 import {
-  getOffers,
+  getCityOffers,
   getIsOffersLoading,
   getLoadOffersError,
 } from '../../store/data/selectors';
@@ -26,7 +26,6 @@ import ErrorMessage from '../error-message/error-message.jsx';
 
 // Константы и пр.
 import {AppRoute} from '../../consts.js';
-import {places} from '../../mocks.js';
 
 const App = (props) => {
   const {
@@ -48,13 +47,13 @@ const App = (props) => {
             <Switch>
               <Route
                 exact path={AppRoute.ROOT}
-                render={(props) => <Main places={places} {...props} />}
+                render={(props) => <Main places={offers} {...props} />}
               />
               <Route
                 exact path={`/offer/:id`}
                 render={(props) => {
                   return (<Offer
-                    offers={places}
+                    offers={offers}
                     offerId={props.match.params.id}
                     {...props}
                   />);
@@ -88,7 +87,7 @@ const mapStateToProps = (state) => ({
   authStatus: getAuthStatus(state),
   isAuthProgress: getAuthProgress(state),
   userData: getUserData(state),
-  offers: getOffers(state),
+  offers: getCityOffers(state),
   isOffersLoading: getIsOffersLoading(state),
   loadOffersError: getLoadOffersError(state),
 });
