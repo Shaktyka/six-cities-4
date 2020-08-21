@@ -9,7 +9,8 @@ import CardsList from '../cards-list/cards-list.jsx';
 
 const city = `Amsterdam`;
 
-const Main = ({places}) => {
+const Main = (props) => {
+  const {places = []} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -25,9 +26,16 @@ const Main = ({places}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{places.length} places to stay in {city}</b>
-              <Filter />
-              <CardsList places={places} />
+              {
+                places.length > 0 ?
+                  <>
+                    <b className="places__found">{places.length} places to stay in {city}</b>
+                    <Filter />
+                    <CardsList places={places} />
+                  </>
+                  :
+                  <b className="places__found">No places found in {city}</b>
+              }
             </section>
 
             <MapBlock
