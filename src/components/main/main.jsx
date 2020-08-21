@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCities} from '../../store/data/selectors';
+import {getActiveCity} from '../../store/app/selectors';
 
 import Header from '../header/header.jsx';
 import Tabs from '../tabs/tabs.jsx';
@@ -16,6 +17,7 @@ const Main = (props) => {
   const {
     places = [],
     cities = [],
+    activeCity,
   } = props;
 
   return (
@@ -25,7 +27,7 @@ const Main = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        <Tabs cities={cities} />
+        <Tabs cities={cities} activeCity={activeCity} />
 
         <div className="cities">
 
@@ -59,10 +61,12 @@ const Main = (props) => {
 Main.propTypes = {
   places: PropTypes.array.isRequired,
   cities: PropTypes.array.isRequired,
+  activeCity: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
   cities: getCities(state),
+  activeCity: getActiveCity(state),
 });
 
 export default connect(mapStateToProps)(Main);
