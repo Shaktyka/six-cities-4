@@ -4,25 +4,6 @@ import L from 'leaflet';
 
 import {LAYER, ATTRIBUTION} from '../../consts.js';
 
-const place = {
-    bedrooms: 3,
-    location: {
-      latitude: 52.369553943508,
-      longitude: 4.85309666406198,
-      zoom: 8
-    },
-    city: {
-      location: {
-        latitude: 52.38333,
-        longitude: 4.9,
-        zoom: 10
-      },
-      name: `Amsterdam`
-    },
-    id: 1,
-    title: `Beautiful & luxurious studio at great location`,
-  };
-
 const PinUrl = {
   ACTIVE: `img/pin-active.svg`,
   NOT_ACTIVE: `img/pin.svg`
@@ -33,18 +14,17 @@ const ICON = L.icon({
   iconSize: [30, 30],
 });
 
-const markers = [
-  {latLng: [52.369553943508, 4.85309666406198], icon: ICON, id: 1},
-  {latLng: [52.3909553943508, 4.85309666406198], icon: ICON, id: 2},
-];
-
 // КЛАСС КАРТЫ
 class MapBlock extends React.Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
-      markersData: markers,
+      places: this.props.places,
+      markers: this.props.markers,
+      cityCenter: this.props.cityCenter,
+      zoom: this.props.zoom,
       activeMarker: 0,
     };
 
@@ -52,10 +32,10 @@ class MapBlock extends React.Component {
     this.layer = null;
   }
 
-  updateMarkers(markersData) {
+  updateMarkers(markers) {
     this.layer.clearLayers();
 
-    markersData.forEach(({ latLng, icon, id }) => {
+    markers.forEach(({ latLng, icon, id }) => {
       L.marker(
         latLng,
         {icon},
@@ -64,13 +44,27 @@ class MapBlock extends React.Component {
     });
   };
 
+  setMarkers() {
+    const {places} = this.state;
+
+    const markers = places.map((place) => {
+      return ({
+        latLng: place.location.latLng,
+        id: place.id,
+        icon: ICON,
+      });
+    });
+    this.setState({markers});
+  };
+
   componentDidMount() {
+    const {places, markers, cityCenter, zoom} = this.state;
     const mapRef = this._mapRef.current;
 
     // Инициализация карты
     this._mapRef = L.map(mapRef, {
-      center: [52.38333, 4.9],
-      zoom: 10,
+      center: cityCenter,
+      zoom: zoom,
       layers: [
         L.tileLayer(LAYER, {
           attribution: ATTRIBUTION
@@ -80,18 +74,20 @@ class MapBlock extends React.Component {
 
     // Добавляет слой маркеров
     this.layer = L.layerGroup().addTo(this._mapRef);
-    this.updateMarkers(this.state.markersData);
+    this.updateMarkers(markers);
   };
 
-  componentDidUpdate({ markersData }) {
-    if (this.state.markersData !== markersData) {
-      this.updateMarkers(this.state.markersData);
+  componentDidUpdate({markers}) {
+    if (this.state.markers !== markers) {
+      this.updateMarkers(this.state.markers);
     }
   };
 
   componentWillUnmount() {
     const map = this._mapRef.current;
     this.layer.clearLayers();
+    this.layer = null;
+    this._mapRef = null;
   };
 
   render() {

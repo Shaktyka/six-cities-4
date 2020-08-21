@@ -1,5 +1,6 @@
 import React from 'react';
 
+import L from 'leaflet';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCities} from '../../store/data/selectors';
@@ -12,15 +13,34 @@ import Filter from '../filter/filter.jsx';
 import MapBlock from '../map-block/map-block.jsx';
 import CardsList from '../cards-list/cards-list.jsx';
 
-const city = `Amsterdam`;
+const PinUrl = {
+  ACTIVE: `img/pin-active.svg`,
+  NOT_ACTIVE: `img/pin.svg`
+};
+
+const ICON = L.icon({
+  iconUrl: PinUrl.NOT_ACTIVE,
+  iconSize: [30, 30],
+});
 
 const Main = (props) => {
   const {
-    places = [],
-    cities = [],
+    places,
+    cities,
     activeCity,
     changeActiveCity,
   } = props;
+
+  // Для карты
+  const cityCenter = places[0].city.center;
+  const zoom = places[0].city.zoom;
+  const markers = places.map((place) => {
+    return ({
+      latLng: place.location.latLng,
+      id: place.id,
+      icon: ICON,
+    });
+  });
 
   return (
     <div className="page page--gray page--main">
@@ -43,17 +63,20 @@ const Main = (props) => {
               {
                 places.length > 0 ?
                   <>
-                    <b className="places__found">{places.length} places to stay in {city}</b>
+                    <b className="places__found">{places.length} places to stay in {activeCity}</b>
                     <Filter />
                     <CardsList places={places} />
                   </>
                   :
-                  <b className="places__found">No places found in {city}</b>
+                  <b className="places__found">No places found in {activeCity}</b>
               }
             </section>
 
             <MapBlock
               places={places}
+              markers={markers}
+              cityCenter={cityCenter}
+              zoom={zoom}
             />
 
           </div>

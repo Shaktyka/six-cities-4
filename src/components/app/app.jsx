@@ -42,7 +42,7 @@ const App = (props) => {
   return (
     <>
       {
-        !isAuthProgress ?
+        !isAuthProgress && !isOffersLoading ?
           <BrowserRouter>
             <Switch>
               <Route
