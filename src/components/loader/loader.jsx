@@ -2,7 +2,12 @@ import React from 'react';
 
 const Loader = () => {
   return (
-    <svg
+    <div>Loading...</div>
+  );
+};
+
+/*
+<svg
       style={{
         position: `fixed`,
         top: `calc(50% - 32px)`,
@@ -22,7 +27,6 @@ const Loader = () => {
         </animateTransform>
       </g>
     </svg>
-  );
-};
+ */
 
 export default Loader;

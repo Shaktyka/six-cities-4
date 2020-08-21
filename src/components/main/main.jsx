@@ -1,5 +1,8 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {getCities} from '../../store/data/selectors';
 
 import Header from '../header/header.jsx';
 import Tabs from '../tabs/tabs.jsx';
@@ -10,7 +13,10 @@ import CardsList from '../cards-list/cards-list.jsx';
 const city = `Amsterdam`;
 
 const Main = (props) => {
-  const {places = []} = props;
+  const {
+    places = [],
+    cities = [],
+  } = props;
 
   return (
     <div className="page page--gray page--main">
@@ -19,7 +25,7 @@ const Main = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
 
-        <Tabs />
+        <Tabs cities={cities} />
 
         <div className="cities">
 
@@ -52,6 +58,11 @@ const Main = (props) => {
 
 Main.propTypes = {
   places: PropTypes.array.isRequired,
+  cities: PropTypes.array.isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  cities: getCities(state),
+});
+
+export default connect(mapStateToProps)(Main);

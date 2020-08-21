@@ -4,6 +4,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {
+  getAuthStatus,
+  getAuthProgress,
+  getUserData
+} from '../../store/user/selectors';
+import {
+  getOffers,
+  getIsOffersLoading,
+  getLoadOffersError,
+} from '../../store/data/selectors';
 
 // Компоненты
 import Main from '../main/main.jsx';
@@ -18,7 +28,19 @@ import ErrorMessage from '../error-message/error-message.jsx';
 import {AppRoute} from '../../consts.js';
 import {places} from '../../mocks.js';
 
-const App = () => {
+const App = (props) => {
+  const {
+    offers,
+    isOffersLoading,
+    loadOffersError,
+    cities,
+
+    authStatus,
+    isAuthProgress,
+    userData,
+  } = props;
+
+  // console.log(cities);
 
   return (
     <BrowserRouter>
@@ -57,4 +79,17 @@ App.propTypes = {
   // places: PropTypes.array.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  authStatus: getAuthStatus(state),
+  isAuthProgress: getAuthProgress(state),
+  userData: getUserData(state),
+  offers: getOffers(state),
+  isOffersLoading: getIsOffersLoading(state),
+  loadOffersError: getLoadOffersError(state),
+});
+
+// const mapDispatchToProps = (dispatch) => ({
+// });
+
+export {App};
+export default connect(mapStateToProps)(App);
