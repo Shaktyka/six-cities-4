@@ -2,11 +2,8 @@ export const getAdaptedOffer = (data) => {
   return ({
     bedrooms: data.bedrooms,
     city: {
-      location: {
-        latitude: data.city.location.latitude,
-        longitude: data.city.location.longitude,
-        zoom: data.city.location.zoom
-      },
+      center: [data.city.location.latitude, data.city.location.longitude],
+      zoom: data.city.location.zoom,
       name: data.city.name
     },
     description: data.description,
@@ -22,8 +19,7 @@ export const getAdaptedOffer = (data) => {
     isFavorite: data.is_favorite,
     isPremium: data.is_premium,
     location: {
-      latitude: data.location.latitude,
-      longitude: data.location.longitude,
+      latLng: [data.location.latitude, data.location.longitude],
       zoom: data.location.zoom
     },
     maxAdults: data.max_adults,
