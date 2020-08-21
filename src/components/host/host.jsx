@@ -13,7 +13,7 @@ const Host = ({host, description}) => {
         <div className={`property__avatar-wrapper ${proClass} user__avatar-wrapper`}>
           <img
             className="property__avatar user__avatar"
-            src={avatarUrl}
+            src={`/${avatarUrl}`}
             width="74"
             height="74"
             alt={`Host ${name} avatar`}

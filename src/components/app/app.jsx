@@ -11,6 +11,7 @@ import {
 } from '../../store/user/selectors';
 import {
   getCityOffers,
+  getOffers,
   getIsOffersLoading,
   getLoadOffersError,
 } from '../../store/data/selectors';
@@ -29,6 +30,7 @@ import {AppRoute} from '../../consts.js';
 
 const App = (props) => {
   const {
+    allOffers,
     offers,
     isOffersLoading,
     loadOffersError,
@@ -42,7 +44,7 @@ const App = (props) => {
   return (
     <>
       {
-        !isAuthProgress && !isOffersLoading ?
+        (!isAuthProgress && !isOffersLoading && offers.length > 0) ?
           <BrowserRouter>
             <Switch>
               <Route
@@ -52,11 +54,7 @@ const App = (props) => {
               <Route
                 exact path={`/offer/:id`}
                 render={(props) => {
-                  return (<Offer
-                    offers={offers}
-                    offerId={props.match.params.id}
-                    {...props}
-                  />);
+                  return <Offer offers={allOffers} {...props} />;
                 }}
               />
               <Route
@@ -88,6 +86,7 @@ const mapStateToProps = (state) => ({
   isAuthProgress: getAuthProgress(state),
   userData: getUserData(state),
   offers: getCityOffers(state),
+  allOffers: getOffers(state),
   isOffersLoading: getIsOffersLoading(state),
   loadOffersError: getLoadOffersError(state),
 });

@@ -21,8 +21,15 @@ const premiumMark = (
 );
 
 const Offer = (props) => {
-  const {offers, offerId} = props;
-  const offer = offers.find((offerEl) => offerEl.id === +offerId);
+  const {offers} = props;
+  const offerId = props.match.params.id;
+  const offer = offers.find((item) => item.id === +offerId);
+
+  if (!offer) {
+    return (
+      <div>A place with id {offerId} didn't found.</div>
+    );
+  }
 
   const {
     bedrooms,
@@ -129,7 +136,6 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   offers: PropTypes.array.isRequired,
-  offerId: PropTypes.string.isRequired,
 };
 
 export default Offer;

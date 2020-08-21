@@ -88,6 +88,10 @@ class MapBlock extends React.Component {
     this.layer.clearLayers();
     this.layer = null;
     this._mapRef = null;
+    this.setState({
+      places: [],
+      cityCenter: [],
+    });
   };
 
   render() {
