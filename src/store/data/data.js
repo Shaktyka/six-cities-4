@@ -256,4 +256,19 @@ export const Operation = {
       });
   },
 
+  loadFavorites: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setFavoritesLoading(true));
+
+    .then((response) => {
+      const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
+      dispatch(ActionCreator.loadFavorites(adaptedOffers));
+      dispatch(ActionCreator.setFavoritesLoading(false));
+      dispatch(ActionCreator.setLoadFavoritesError(``));
+    })
+    .catch((error) => {
+      dispatch(ActionCreator.setFavoritesLoading(false));
+      dispatch(ActionCreator.setLoadFavoritesError(error));
+    });
+  },
+
 };
