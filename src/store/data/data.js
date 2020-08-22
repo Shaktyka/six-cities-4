@@ -5,32 +5,38 @@ import {MAX_CITIES_AMOUNT, Endpoint} from '../../consts.js';
 import {ActionCreator as AppActionCreator} from '../app/app.js';
 
 export const initialState = {
-  offers: [],
-  favorites: [],
-  offerReviews: [],
-  cities: [],
+  offers: [], // предложения
+  favorites: [], // избранные
+  offerReviews: [], // список ревью
+  nearby: [], // предложения поблизости
+  cities: [], // список городов
   isOffersLoading: false,
   isFavoritesLoading: false,
   isOfferReviewsLoading: false,
+  isNearbyLoading: false,
   isReviewPosting: false,
   loadOffersError: ``,
   loadFavoritesError: ``,
   loadOfferReviewsError: ``,
-  loadReviewPostingError: ``
+  loadNearbyError: ``,
+  loadReviewPostingError: ``,
 };
 
 export const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_OFFER_REVIEWS: `LOAD_OFFER_REVIEWS`,
+  LOAD_NEARBY: `LOAD_NEARBY`,
   SET_CITIES: `SET_CITIES`,
   SET_OFFERS_LOADING: `SET_OFFERS_LOADING`,
   SET_FAVORITES_LOADING: `SET_FAVORITES_LOADING`,
   SET_OFFER_REVIEWS_LOADING: `SET_OFFER_REVIEWS_LOADING`,
+  SET_NEARBY_LOADING: `SET_NEARBY_LOADING`,
   SET_REVIEW_POSTING: `SET_REVIEW_POSTING`,
   SET_LOAD_OFFERS_ERROR: `SET_LOAD_OFFERS_ERROR`,
   SET_LOAD_FAVORITES_ERROR: `SET_LOAD_FAVORITES_ERROR`,
   SET_LOAD_OFFER_REVIEWS_ERROR: `SET_LOAD_OFFER_REVIEWS_ERROR`,
+  SET_LOAD_NEARBY_ERROR: `SET_LOAD_NEARBY_ERROR`,
   SET_LOAD_REVIEW_POSTING_ERROR: `SET_LOAD_REVIEW_POSTING_ERROR`,
 };
 
@@ -54,6 +60,13 @@ export const ActionCreator = {
     return ({
       type: ActionType.LOAD_OFFER_REVIEWS,
       payload: reviews
+    });
+  },
+
+  loadNearby: (nearby) => {
+    return ({
+      type: ActionType.LOAD_NEARBY,
+      payload: nearby
     });
   },
 
@@ -89,6 +102,15 @@ export const ActionCreator = {
       {
         type: ActionType.SET_OFFER_REVIEWS_LOADING,
         payload: isOfferReviewsLoading
+      }
+    );
+  },
+
+  setNearbyLoading: (isNearbyLoading) => {
+    return (
+      {
+        type: ActionType.SET_NEARBY_LOADING,
+        payload: isNearbyLoading
       }
     );
   },
@@ -130,6 +152,15 @@ export const ActionCreator = {
     );
   },
 
+  setLoadNearbyError: (message) => {
+    return (
+      {
+        type: ActionType.SET_LOAD_NEARBY_ERROR,
+        payload: message
+      }
+    );
+  },
+
   setLoadReviewPostingError: (message) => {
     return (
       {
@@ -159,6 +190,11 @@ export const reducer = (state = initialState, action) => {
         offerReviews: action.payload
       });
 
+    case ActionType.LOAD_NEARBY:
+      return extend(state, {
+        nearby: action.payload
+      });
+
     case ActionType.SET_CITIES:
       return extend(state, {
         cities: action.payload
@@ -177,6 +213,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.SET_OFFER_REVIEWS_LOADING:
       return extend(state, {
         isOfferReviewsLoading: action.payload
+      });
+
+    case ActionType.SET_NEARBY_LOADING:
+      return extend(state, {
+        isNearbyLoading: action.payload
       });
 
     case ActionType.SET_REVIEW_POSTING:
@@ -198,6 +239,11 @@ export const reducer = (state = initialState, action) => {
     case ActionType.SET_LOAD_OFFER_REVIEWS_ERROR:
       return extend(state, {
         loadOfferReviewsError: action.payload
+      });
+
+    case ActionType.SET_LOAD_NEARBY_ERROR:
+      return extend(state, {
+        loadNearbyError: action.payload
       });
 
     case ActionType.SET_LOAD_REVIEW_POSTING_ERROR:
@@ -259,16 +305,33 @@ export const Operation = {
   loadFavorites: () => (dispatch, getState, api) => {
     dispatch(ActionCreator.setFavoritesLoading(true));
 
-    .then((response) => {
-      const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
-      dispatch(ActionCreator.loadFavorites(adaptedOffers));
-      dispatch(ActionCreator.setFavoritesLoading(false));
-      dispatch(ActionCreator.setLoadFavoritesError(``));
-    })
-    .catch((error) => {
-      dispatch(ActionCreator.setFavoritesLoading(false));
-      dispatch(ActionCreator.setLoadFavoritesError(error));
-    });
+    return api.get(Endpoint.FAVORITE)
+      .then((response) => {
+        const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
+        dispatch(ActionCreator.loadFavorites(adaptedOffers));
+        dispatch(ActionCreator.setFavoritesLoading(false));
+        dispatch(ActionCreator.setLoadFavoritesError(``));
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.setFavoritesLoading(false));
+        dispatch(ActionCreator.setLoadFavoritesError(error));
+      });
+  },
+
+  loadNearby: (id) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.setNearbyLoading(true));
+
+    return api.get(`${Endpoint.OFFERS}/${id}/${Endpoint.NEARBY}`)
+      .then((response) => {
+        const adaptedOffers = response.data.map((offer) => getAdaptedOffer(offer));
+        dispatch(ActionCreator.loadNearby(adaptedOffers));
+        dispatch(ActionCreator.setNearbyLoading(false));
+        dispatch(ActionCreator.setLoadNearbyError(``));
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.setNearbyLoading(false));
+        dispatch(ActionCreator.setLoadNearbyError(error));
+      });
   },
 
 };

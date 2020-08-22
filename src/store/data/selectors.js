@@ -26,6 +26,10 @@ export const getOfferReviews = (state) => {
   return state[NAME_SPACE].offerReviews;
 };
 
+export const getNearby = (state) => {
+  return state[NAME_SPACE].nearby;
+};
+
 export const getCities = (state) => {
   return state[NAME_SPACE].cities;
 };
@@ -43,6 +47,10 @@ export const getIsOfferReviewsLoading = (state) => {
   return state[NAME_SPACE].isOfferReviewsLoading;
 };
 
+export const getIsNearbyLoading = (state) => {
+  return state[NAME_SPACE].isNearbyLoading;
+};
+
 export const getIsReviewPosting = (state) => {
   return state[NAME_SPACE].isReviewPosting;
 };
@@ -58,6 +66,10 @@ export const getLoadFavoritesError = (state) => {
 
 export const getLoadOfferReviewsError = (state) => {
   return state[NAME_SPACE].loadOfferReviewsError;
+};
+
+export const getLoadNearbyError = (state) => {
+  return state[NAME_SPACE].loadNearbyError;
 };
 
 export const getLoadReviewPostingError = (state) => {

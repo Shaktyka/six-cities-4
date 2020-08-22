@@ -23,6 +23,7 @@ export const Endpoint = {
   FAVORITE: `/favorite`,
   REVIEWS: `/comments`,
   LOGIN: `/login`,
+  NEARBY: `/nearby`,
 };
 
 export const AuthStatus = {
